@@ -1,0 +1,31 @@
+<?php
+
+use App\Http\Controllers\GaleriController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+// Route::get('/', function () {
+//     return view('home');
+// });
+
+Route::get('/home', [GaleriController::class, 'index']);
+Route::get('/', [UserController::class, 'login']);
+Route::get('/register', [UserController::class, 'register']);
+Route::post('/register-process',[UserController::class, 'registerProcess']);
+Route::post('/login-process', [UserController::class, 'loginProcess']);
+Route::get('/logout', [UserController::class, 'logout']);
+Route::post('/posting', [GaleriController::class, 'store']);
+
+Route::get('/hapus/{id}', [GaleriController::class, 'show']);
+Route::post('/update/{id}', [GaleriController::class, 'update']);
